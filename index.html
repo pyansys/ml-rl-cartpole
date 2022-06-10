@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Reinforcement ML using PyMAPDL: Cart-Pole Simulation &#8212; ML-RL-Cartpole</title>
+    
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    
+        <link href="_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reinforcement Machine Learning using PyMAPDL: Cartpole Simulation" href="ml-rl-notebook.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><style>
+    .navbar-light {
+        background-color: black !important;
+    }
+</style>
+
+<div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="https://docs.pyansys.com/">
+  <img src="_static/pyansys-logo-black-cropped.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon" >
+      <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
+    </span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="ml-rl-notebook.html">
+  Reinforcement Machine Learning using PyMAPDL: Cartpole Simulation
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/ml-rl-cartpole" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://mapdldocs.pyansys.com/">PyMAPDL</a> » </li>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://mapdldocs.pyansys.com/user_guide/extended_examples/index.html">Extended Examples Library</a> » </li>
+    
+    
+
+        <li class="nav-item nav-item-this"><a href="">Reinforcement ML using PyMAPDL: Cart-Pole Simulation</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#usage">
+     Usage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contributions">
+     Contributions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#license">
+     License
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <blockquote>
+<div></div></blockquote>
+<section id="reinforcement-ml-using-pymapdl-cart-pole-simulation">
+<span id="ref-index"></span><h1>Reinforcement ML using PyMAPDL: Cart-Pole Simulation<a class="headerlink" href="#reinforcement-ml-using-pymapdl-cart-pole-simulation" title="Permalink to this headline">¶</a></h1>
+<p>This notebook demonstrates a reinforcement machine learning example using MAPDL
+through PyMAPDL.  See the example notebook at <a class="reference external" href="https://pyansys.github.io/ml-rl-cartpole/ml-rl-notebook.html">PyMAPDL Cart-Pole Notebook</a>.</p>
+<a class="reference external image-reference" href="https://github.com/pyansys/ml-rl-cartpole/blob/main/notebook.ipynb"><img alt="CartPole ML" src="https://github.com/pyansys/ml-rl-cartpole/raw/main/doc/source/images/openai.gif" /></a>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>First, make sure you have PyMAPDL and MAPDL installed. Visit <a class="reference external" href="https://mapdldocs.pyansys.com/getting_started/index.html">PyMAPDL - Getting
+Started</a></p>
+<p>Next, clone the <a class="reference external" href="https://github.com/pyansys/ml-rl-cartpole">ml-rl-cartpole</a>
+repository and make sure you are in the correct directory with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pyansys</span><span class="o">/</span><span class="n">ml</span><span class="o">-</span><span class="n">rl</span><span class="o">-</span><span class="n">cartpole</span>
+<span class="n">cd</span> <span class="n">ml</span><span class="o">-</span><span class="n">rl</span><span class="o">-</span><span class="n">cartpole</span>
+</pre></div>
+</div>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<p>Start <a class="reference external" href="https://jupyter.org/">JupyterLab</a> and open <a class="reference external" href="https://github.com/pyansys/ml-rl-cartpole/blob/main/cartpole.ipynb">cartpole.ipynb</a>. Follow
+the directions in the example.</p>
+</section>
+<section id="contributions">
+<h3>Contributions<a class="headerlink" href="#contributions" title="Permalink to this headline">¶</a></h3>
+<p>Feel free to contribute to <a class="reference external" href="https://github.com/pyansys/ml-rl-cartpole">ml-rl-cartpole repository</a>.</p>
+</section>
+<section id="license">
+<h3>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h3>
+<p>This example is licened under the <a class="reference external" href="https://raw.githubusercontent.com/pyansys/ml-rl-cartpole/main/LICENSE">MIT License</a>.</p>
+<p><strong>Table of Contents</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ml-rl-notebook.html">Reinforcement Machine Learning using PyMAPDL: Cartpole Simulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ml-rl-notebook.html#background-markov-decision-process">Background: Markov Decision Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml-rl-notebook.html#cartpole-simulation">CartPole Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml-rl-notebook.html#reinforcement-learning-deep-q-network">Reinforcement Learning: Deep Q-Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml-rl-notebook.html#reusing-trained-agent">Reusing trained agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml-rl-notebook.html#epilogue">Epilogue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml-rl-notebook.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
